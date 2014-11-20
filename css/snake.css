@@ -1,0 +1,66 @@
+* {
+	font-family: helvetica;
+}
+
+h1 {
+	text-align: center;
+	font-family: helvetica;
+}
+
+.board {
+	width: 400px;
+	height: 400px;
+	border: 1px solid black;
+	float: left;
+	margin: 0 20px 0 300px;
+/*	border-right: none; */
+/*	margin: 0 auto; */
+/*	background: #BFE0CF; */
+}
+
+.row {
+	width: 100%;
+/*	border-bottom: 1px solid black; */
+	height: 20px;
+}
+
+.timer {
+	font-family: helvetica;
+	color: red;
+	text-align: center;
+	font-size: 35px;
+	margin-top: 160px;
+}
+
+.row:last-child {
+	border-bottom: none;
+}
+
+.setup {
+	margin-top: 160px;
+	text-align: center;
+}
+
+.cell {
+	width: 20px;
+	height: 100%;
+/*	border-right: 1px solid black;*/
+	float: left;
+}
+
+.snake {
+	background: green;
+}
+
+.apple {
+	background: red;
+}
+
+.score-box {
+	padding: 10px 0 0 10px;
+	font-family: helvetica;
+	width: 200px;
+	height: 200px;
+	border: 1px solid black;
+	float: left;
+}

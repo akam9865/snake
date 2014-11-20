@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SNAKE</title>
+    <link rel="stylesheet" type="text/css" href="../css/snake.css">
+  </head>
+	
+  <body>
+		<h1>Snake</h1>
+		<div class="board">
+			<div class="setup">
+				<span>choose your difficulty</span>
+				<div class="buttons">
+					<button data-speed="150">slow</button>
+					<button data-speed="100">medium</button>
+					<button data-speed= "50">fast</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="score-box">
+			SCORE: 
+			<span class="score">0</span>
+			<br>
+			High Scores:
+			<!-- erb the list of high scores -->
+		</div>
+		
+    <script src="../js/jquery-2.1.1.js"></script>
+    <!-- Whackjobs at GithubPages don't understand symlinks... -->
+    <!-- // <script src="../core-solution/hanoi-core.js"></script> -->
+    <script src="../js/snake.js"></script>
+    <script src="../js/snake-view.js"></script>
+
+    <script>
+      // Write your code here.
+			$(function () {
+				// new SG.Snake(new SG.Board(10));
+				new SG.View($(".board"), $(".score"));
+			});
+    </script>
+  </body>
+</html>
