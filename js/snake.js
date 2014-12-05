@@ -16,11 +16,23 @@
 		return (this.x === otherCoord.x && this.y === otherCoord.y)
 	};
 	
+	
 	Coord.prototype.randomCoord = function () {
 		x = Math.floor(Math.random() * 20)
 		y = Math.floor(Math.random() * 20)
 
 		return new Coord(x, y)
+	};
+	
+	Array.prototype.indexOf = function (target) {
+		var idx = -1
+
+		this.forEach(function(el, index){
+			if (target.equals(el)) {
+				idx = index;
+			}
+		});
+		return idx
 	};
 	
 	var Snake = SG.Snake = function (board) {
@@ -62,9 +74,15 @@
 	};
 	
 	Snake.prototype.randomApple = function randomApple() {
-		var app = (new Coord(0,0)).randomCoord()
-		
-		return app;
+		var app = (new Coord(0,0)).randomCoord();
+
+		if (this.segments.indexOf(app) === -1) {
+			return app
+		} else {
+			// apple respawn bug still not fixed
+			alert("bug achieved");
+			return this.randomApple();			
+		}
 	};
 	
 	Snake.prototype.isValid = function () {
@@ -96,7 +114,6 @@
 			this.segments.shift();
 		}
 
-
 		if (!this.isValid()) {
 			this.segments = [];
 		}
@@ -111,8 +128,6 @@
 	var Board = SG.Board = function (dim) {
 		this.dim   = dim;
 		this.snake = new Snake(this);
-
-		// this.render();
 	};
 	
 	Board.prototype.makeGrid = function (dim) {
@@ -134,7 +149,6 @@
 		this.snake.segments.forEach( function (segment) {
 			grid[segment.x][segment.y] = "S";
 		});
-		
 
     var g = grid.map(function (row) {
       return row.join("");

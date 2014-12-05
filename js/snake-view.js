@@ -8,6 +8,7 @@
 		this.$scoreEl = $scoreEl;
 		this.board = new SG.Board(20);
 		this.snake = new SG.Snake(this.board);
+		this.highScores = {};
 		
 		// this.interval = window.setInterval(this.step.bind(this), 100)
 		$("button").on("click", this.start.bind(this))
@@ -36,8 +37,6 @@
 		setTimeout(function() {
 				view.interval = window.setInterval(view.step.bind(view), speed)
 		}, 3000)
-		
-		// this.interval = window.setInterval(this.step.bind(this), speed)
 	};
 	
 
