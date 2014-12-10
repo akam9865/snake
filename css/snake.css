@@ -13,14 +13,11 @@ h1 {
 	border: 1px solid black;
 	float: left;
 	margin: 0 20px 0 300px;
-/*	border-right: none; */
-/*	margin: 0 auto; */
-/*	background: #BFE0CF; */
+/*	background: #BFE0CF;*/
 }
 
 .row {
 	width: 100%;
-/*	border-bottom: 1px solid black; */
 	height: 20px;
 }
 
@@ -37,14 +34,17 @@ h1 {
 }
 
 .setup {
-	margin-top: 160px;
+	margin-top: 20px;
 	text-align: center;
+}
+
+.setup.inactive {
+	display: none;
 }
 
 .cell {
 	width: 20px;
 	height: 100%;
-/*	border-right: 1px solid black;*/
 	float: left;
 }
 
@@ -57,16 +57,27 @@ h1 {
 }
 
 .information {
-	width: 200px;
-	height: 300px;
+	width: 215px;
+	height: 400px;
 	float: left;
 }
 
 .score-box {
-	padding: 10px 0 0 10px;
+	padding: 10px 0 0 13px;
 	font-family: helvetica;
 	width: 200px;
-	height: 200px;
+	height: 300px;
 	border: 1px solid black;
 }
 
+.high-scores {
+	margin-top: 10px;
+}
+
+ol {
+	margin: 0 0 5px 0;
+}
+
+.slow, .medium, .fast {
+	height: 75px;
+}

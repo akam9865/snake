@@ -14,11 +14,31 @@
 		
 		<div class="information">
 			<div class="score-box">
-				SCORE: 
+				Current Score: 
 				<span class="score">0</span>
-				<br>
-				<!-- High Scores: -->
-				<!-- erb the list of high scores -->
+				
+				<div class="high-scores">
+					High Scores:
+					<br>
+					<br>
+					<div class="slow">
+						Slow:
+						<ol id="slow">						
+						</ol>
+					</div>
+					
+					<div class="medium">
+						Medium:
+						<ol id="medium">
+						</ol>
+					</div>
+					
+					<div class="fast">
+						Fast:
+						<ol id="fast">
+						</ol>
+					</div>
+				</div>
 			</div>
 			
 			<div class="setup">
@@ -29,6 +49,8 @@
 					<button data-speed= "50">fast</button>
 				</div>
 			</div>
+			
+			
 		</div>
 		
     <script src="js/jquery-2.1.1.js"></script>

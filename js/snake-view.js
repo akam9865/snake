@@ -8,33 +8,30 @@
 		this.$scoreEl = $scoreEl;
 		this.board = new SG.Board(20);
 		this.snake = new SG.Snake(this.board);
-		this.highScores = {};
+		this.speed = 0;
+		this.highScores = {
+			"slow": [],
+			"medium": [],
+			"fast": []
+		};
 		
-		// this.interval = window.setInterval(this.step.bind(this), 100)
 		$("button").on("click", this.start.bind(this))
-		// this.$boardEl.on("click", this.start.bind(this))
-		
 		$(window).on("keydown", this.handleKeyEvent.bind(this));
 	};
 	
-	
-	// View.prototype.setupInterval = function () {
-	// 	this.interval = window.setInterval(this.step.bind(this), speed)
-	// };
-	
 	View.prototype.start = function (event) {
 		var view = this;
-		
+
 		this.$boardEl.empty();
-		var speed = event.currentTarget.dataset.speed
-		
-		this.$boardEl.append($("<div class='timer'></div>"))
+		this.speed = event.currentTarget.dataset.speed;
+		var speed = this.speed
+		this.$boardEl.append($("<div class='timer'></div>"));
 
 		setTimeout(function() {$(".timer").text(3)}, 0);
 		setTimeout(function() {$(".timer").text(2)}, 1000);
 		setTimeout(function() {$(".timer").text(1)}, 2000);
-		
 		setTimeout(function() {
+				$(".setup").addClass("inactive");
 				view.interval = window.setInterval(view.step.bind(view), speed)
 		}, 3000)
 	};
@@ -64,15 +61,24 @@
 		
 		if (this.snake.segments.length === 0) {
 			this.$boardEl.empty();
-			alert("YOU LOSE!\nscore: " + this.snake.score)
+		
+			// var inits = prompt("You scored" + this.snake.score + " enter your initials");
 			window.clearInterval(this.interval);
 			
-			this.highScores["default"] = this.snake.score;
+			this.highScores[View.SPEEDS[this.speed]].push(this.snake.score);
+			this.handleHighScores();
+			$(".setup").removeClass("inactive");
 			
 			this.board = new SG.Board(20);
 			this.snake = new SG.Snake(this.board);
 		};
 	};
+	
+	View.SPEEDS = {
+		150: "slow",
+		100: "medium",
+		50: "fast"
+	}
 	
 	View.KEYS = {
 		37: "W",
@@ -80,6 +86,25 @@
 		39: "E",
 		40: "S"
 	}
+	
+	function numSort(a, b) {
+		return b - a;
+	};
+	
+	View.prototype.handleHighScores = function () {
+		
+		$.each(this.highScores, function(idx, value) {
+			var tops = value.sort(numSort).slice(0, 3);
+			var $ol = $("#" + idx);
+			$ol.empty();
+			
+			tops.forEach(function (score){
+				var $li = $("<li></li>");
+				$li.text(score);
+				$ol.append($li);
+			});
+		});
+	};
 	
 	View.prototype.handleKeyEvent = function (event) {
 		if (View.KEYS[event.keyCode]) {
