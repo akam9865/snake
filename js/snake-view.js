@@ -17,10 +17,10 @@
 		$(window).on("keydown", this.handleKeyEvent.bind(this));
 	};
 	
+	
 	// View.prototype.setupInterval = function () {
 	// 	this.interval = window.setInterval(this.step.bind(this), speed)
 	// };
-	
 	
 	View.prototype.start = function (event) {
 		var view = this;
@@ -63,13 +63,14 @@
 		this.$scoreEl.text(this.snake.score);
 		
 		if (this.snake.segments.length === 0) {
-			
 			this.$boardEl.empty();
 			alert("YOU LOSE!\nscore: " + this.snake.score)
 			window.clearInterval(this.interval);
-			// new SG.View($(".board"), $(".score"));
-			// figure out how to reset to original page
-			// write a view.reset function
+			
+			this.highScores["default"] = this.snake.score;
+			
+			this.board = new SG.Board(20);
+			this.snake = new SG.Snake(this.board);
 		};
 	};
 	

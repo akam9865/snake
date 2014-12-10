@@ -56,11 +56,17 @@ h1 {
 	background: red;
 }
 
+.information {
+	width: 200px;
+	height: 300px;
+	float: left;
+}
+
 .score-box {
 	padding: 10px 0 0 10px;
 	font-family: helvetica;
 	width: 200px;
 	height: 200px;
 	border: 1px solid black;
-	float: left;
 }
+

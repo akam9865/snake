@@ -79,8 +79,6 @@
 		if (this.segments.indexOf(app) === -1) {
 			return app
 		} else {
-			// apple respawn bug still not fixed
-			alert("bug achieved");
 			return this.randomApple();			
 		}
 	};
